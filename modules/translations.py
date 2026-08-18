@@ -12,6 +12,10 @@ TRANSLATIONS = {
         "stargazing": "🪐 Hệ Mặt Trời 3D",
         "news": "📰 Tin Tức & Cào Dữ Liệu",
         "lang_label": "🌐 Ngôn ngữ / Language",
+        "theme_label": "🎨 Chế độ giao diện (Theme):",
+        "theme_dark": "🌙 Tối (Space Dark)",
+        "theme_light": "☀️ Sáng (Clean Light)",
+        "theme_auto": "🔄 Tự động (Auto System)",
         "nasa_key_label": "🔑 NASA API Key (Tùy chọn)",
         "nasa_key_help": "Mặc định sử dụng DEMO_KEY. Bạn có thể nhập key riêng tại api.nasa.gov.",
         "footer": "🌌 Xây dựng bằng Streamlit & Python | Dữ liệu mở từ NASA API, Open-Notify, SNAPI, Space.com."
@@ -27,6 +31,10 @@ TRANSLATIONS = {
         "stargazing": "🪐 3D Solar System",
         "news": "📰 Space News & Scraping",
         "lang_label": "🌐 Language / Ngôn ngữ",
+        "theme_label": "🎨 Theme Mode:",
+        "theme_dark": "🌙 Dark (Space Dark)",
+        "theme_light": "☀️ Light (Clean Light)",
+        "theme_auto": "🔄 Auto (System)",
         "nasa_key_label": "🔑 NASA API Key (Optional)",
         "nasa_key_help": "Defaults to DEMO_KEY. You can enter your own key from api.nasa.gov.",
         "footer": "🌌 Built with Streamlit & Python | Open Data from NASA API, Open-Notify, SNAPI, Space.com."
