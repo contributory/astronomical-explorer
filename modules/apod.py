@@ -1,6 +1,7 @@
 import requests
 import streamlit as st
-from datetime import date, datetime, timedelta
+import datetime
+from datetime import date, timedelta
 import random
 
 NASA_API_KEY = "DEMO_KEY"
@@ -13,7 +14,7 @@ def get_apod_data(selected_date=None, api_key=NASA_API_KEY):
     """
     url = f"https://api.nasa.gov/planetary/apod?api_key={api_key}"
     if selected_date:
-        if isinstance(selected_date, (date, datetime)):
+        if isinstance(selected_date, (date, datetime.date, datetime.datetime)):
             date_str = selected_date.strftime("%Y-%m-%d")
         else:
             date_str = str(selected_date)
@@ -67,7 +68,7 @@ def render_apod_page(api_key=NASA_API_KEY):
         start_timestamp = min_date.toordinal()
         end_timestamp = today.toordinal()
         random_ordinal = random.randint(start_timestamp, end_timestamp)
-        selected_date = date.from_ordinal(random_ordinal)
+        selected_date = date.fromordinal(random_ordinal)
         st.info(f"Đã chọn ngẫu nhiên ngày: {selected_date.strftime('%d/%m/%Y')}")
 
     if today_btn:
