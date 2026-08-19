@@ -20,82 +20,138 @@ from modules.stargazing import render_stargazing_page
 
 DARK_CSS = """
 <style>
+    /* Dark Theme styling */
     html, body, [data-testid="stAppViewContainer"] {
-        background-color: #0B0E14 !important;
+        background: #090D16 !important;
         color: #F0F6FC !important;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
     p, span, label, h1, h2, h3, h4, h5, h6, .stMarkdown {
         color: #F0F6FC !important;
     }
     .main-header {
-        font-size: 2.6rem;
+        font-size: 2.8rem;
         font-weight: 800;
-        background: linear-gradient(90deg, #00D2FF, #8E2DE2, #FF007F);
+        background: linear-gradient(135deg, #00F2FE 0%, #4FACFE 50%, #00D2FF 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin-bottom: 0.5rem;
+        letter-spacing: -0.5px;
+        margin-bottom: 0.3rem;
     }
     .sub-header {
         font-size: 1.15rem;
-        color: #C9D1D9 !important;
+        color: #8B949E !important;
         margin-bottom: 2rem;
     }
     [data-testid="stSidebar"] {
-        background-color: #161B22 !important;
-        border-right: 1px solid #30363D;
+        background: #111622 !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    /* Cards and Containers */
+    div[data-testid="stMetric"], div.stCard {
+        background: rgba(22, 27, 34, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 18px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
     div[data-testid="stMetricValue"] {
-        font-size: 2rem !important;
-        color: #58A6FF !important;
-        font-weight: 700;
+        font-size: 2.2rem !important;
+        color: #38BDF8 !important;
+        font-weight: 800;
     }
     div[data-testid="stMetricLabel"] {
-        color: #8B949E !important;
+        color: #94A3B8 !important;
+        font-weight: 500;
     }
+    /* Buttons */
+    .stButton > button {
+        background: linear-gradient(135deg, #2563EB, #1D4ED8) !important;
+        color: #FFFFFF !important;
+        border-radius: 8px !important;
+        border: none !important;
+        font-weight: 600 !important;
+        transition: all 0.3s ease !important;
+        box-shadow: 0 2px 10px rgba(37, 99, 235, 0.3) !important;
+    }
+    .stButton > button:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.5) !important;
+    }
+    /* Expanders */
     .streamlit-expanderHeader {
-        background-color: #21262D !important;
-        color: #F0F6FC !important;
+        background-color: #1E293B !important;
+        color: #F8FAFC !important;
+        border-radius: 8px !important;
     }
 </style>
 """
 
 LIGHT_CSS = """
 <style>
+    /* Light Theme styling */
     html, body, [data-testid="stAppViewContainer"] {
-        background-color: #F6F8FA !important;
-        color: #1F2328 !important;
+        background: #F8FAFC !important;
+        color: #0F172A !important;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
     p, span, label, h1, h2, h3, h4, h5, h6, .stMarkdown {
-        color: #1F2328 !important;
+        color: #0F172A !important;
     }
     .main-header {
-        font-size: 2.6rem;
+        font-size: 2.8rem;
         font-weight: 800;
-        background: linear-gradient(90deg, #0969DA, #8E2DE2, #CF222E);
+        background: linear-gradient(135deg, #0284C7 0%, #2563EB 50%, #4F46E5 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin-bottom: 0.5rem;
+        letter-spacing: -0.5px;
+        margin-bottom: 0.3rem;
     }
     .sub-header {
         font-size: 1.15rem;
-        color: #57606A !important;
+        color: #475569 !important;
         margin-bottom: 2rem;
     }
     [data-testid="stSidebar"] {
-        background-color: #FFFFFF !important;
-        border-right: 1px solid #D0D7DE;
+        background: #FFFFFF !important;
+        border-right: 1px solid #E2E8F0;
+    }
+    /* Cards and Containers */
+    div[data-testid="stMetric"], div.stCard {
+        background: #FFFFFF;
+        border: 1px solid #E2E8F0;
+        border-radius: 12px;
+        padding: 18px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
     div[data-testid="stMetricValue"] {
-        font-size: 2rem !important;
-        color: #0969DA !important;
-        font-weight: 700;
+        font-size: 2.2rem !important;
+        color: #0284C7 !important;
+        font-weight: 800;
     }
     div[data-testid="stMetricLabel"] {
-        color: #57606A !important;
+        color: #64748B !important;
+        font-weight: 500;
     }
+    /* Buttons */
+    .stButton > button {
+        background: linear-gradient(135deg, #0284C7, #2563EB) !important;
+        color: #FFFFFF !important;
+        border-radius: 8px !important;
+        border: none !important;
+        font-weight: 600 !important;
+        box-shadow: 0 2px 8px rgba(2, 132, 199, 0.2) !important;
+    }
+    .stButton > button:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4) !important;
+    }
+    /* Expanders */
     .streamlit-expanderHeader {
-        background-color: #EAEEF2 !important;
-        color: #1F2328 !important;
+        background-color: #F1F5F9 !important;
+        color: #0F172A !important;
+        border-radius: 8px !important;
     }
 </style>
 """
@@ -104,70 +160,76 @@ AUTO_CSS = """
 <style>
     @media (prefers-color-scheme: dark) {
         html, body, [data-testid="stAppViewContainer"] {
-            background-color: #0B0E14 !important;
+            background: #090D16 !important;
             color: #F0F6FC !important;
         }
         p, span, label, h1, h2, h3, h4, h5, h6, .stMarkdown {
             color: #F0F6FC !important;
         }
         .main-header {
-            font-size: 2.6rem;
+            font-size: 2.8rem;
             font-weight: 800;
-            background: linear-gradient(90deg, #00D2FF, #8E2DE2, #FF007F);
+            background: linear-gradient(135deg, #00F2FE 0%, #4FACFE 50%, #00D2FF 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
         .sub-header {
             font-size: 1.15rem;
-            color: #C9D1D9 !important;
+            color: #8B949E !important;
             margin-bottom: 2rem;
         }
         [data-testid="stSidebar"] {
-            background-color: #161B22 !important;
-            border-right: 1px solid #30363D;
+            background: #111622 !important;
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        div[data-testid="stMetric"] {
+            background: rgba(22, 27, 34, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 18px;
         }
         div[data-testid="stMetricValue"] {
-            font-size: 2rem !important;
-            color: #58A6FF !important;
-            font-weight: 700;
-        }
-        div[data-testid="stMetricLabel"] {
-            color: #8B949E !important;
+            font-size: 2.2rem !important;
+            color: #38BDF8 !important;
+            font-weight: 800;
         }
     }
     @media (prefers-color-scheme: light) {
         html, body, [data-testid="stAppViewContainer"] {
-            background-color: #F6F8FA !important;
-            color: #1F2328 !important;
+            background: #F8FAFC !important;
+            color: #0F172A !important;
         }
         p, span, label, h1, h2, h3, h4, h5, h6, .stMarkdown {
-            color: #1F2328 !important;
+            color: #0F172A !important;
         }
         .main-header {
-            font-size: 2.6rem;
+            font-size: 2.8rem;
             font-weight: 800;
-            background: linear-gradient(90deg, #0969DA, #8E2DE2, #CF222E);
+            background: linear-gradient(135deg, #0284C7 0%, #2563EB 50%, #4F46E5 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
         .sub-header {
             font-size: 1.15rem;
-            color: #57606A !important;
+            color: #475569 !important;
             margin-bottom: 2rem;
         }
         [data-testid="stSidebar"] {
-            background-color: #FFFFFF !important;
-            border-right: 1px solid #D0D7DE;
+            background: #FFFFFF !important;
+            border-right: 1px solid #E2E8F0;
+        }
+        div[data-testid="stMetric"] {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 18px;
         }
         div[data-testid="stMetricValue"] {
-            font-size: 2rem !important;
-            color: #0969DA !important;
-            font-weight: 700;
-        }
-        div[data-testid="stMetricLabel"] {
-            color: #57606A !important;
+            font-size: 2.2rem !important;
+            color: #0284C7 !important;
+            font-weight: 800;
         }
     }
 </style>
