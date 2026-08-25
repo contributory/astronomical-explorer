@@ -43,8 +43,12 @@ def get_apod_data(selected_date=None, api_key=NASA_API_KEY):
         return None, f"Lỗi kết nối: {str(e)}"
 
 def render_apod_page(api_key=NASA_API_KEY):
-    st.header("🌌 Ảnh Thiên Văn Trong Ngày (NASA APOD)")
-    st.markdown("Khám phá các bức ảnh vũ trụ tuyệt đẹp được NASA cập nhật mỗi ngày kèm theo giải thích từ các nhà thiên văn học.")
+    st.markdown("""
+    <div style="background: linear-gradient(135deg, rgba(56,189,248,0.1), rgba(99,102,241,0.1)); border: 1px solid rgba(56,189,248,0.2); border-radius: 16px; padding: 24px; margin-bottom: 24px;">
+        <h2 style="margin-top:0; font-weight:800; color:#38BDF8;">🌌 Ảnh Thiên Văn Trong Ngày (NASA APOD)</h2>
+        <p style="margin-bottom:0; color:#94A3B8;">Khám phá bức ảnh vũ trụ tuyệt đẹp được các nhà thiên văn học NASA lựa chọn mỗi ngày kèm phần thuyết minh chuyên sâu.</p>
+    </div>
+    """, unsafe_allow_html=True)
 
     col1, col2, col3 = st.columns([2, 1, 1])
 
@@ -83,7 +87,7 @@ def render_apod_page(api_key=NASA_API_KEY):
         return
 
     if data:
-        st.subheader(data.get("title", "Không có tiêu đề"))
+        st.markdown(f"<h3 style='font-size: 1.8rem; font-weight: 700; margin-top: 10px;'>{data.get('title', 'Không có tiêu đề')}</h3>", unsafe_allow_html=True)
 
         c_meta1, c_meta2, c_meta3 = st.columns(3)
         c_meta1.caption(f"📅 Ngày: {data.get('date', 'N/A')}")
