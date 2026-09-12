@@ -6,10 +6,8 @@ const nextConfig = {
       { protocol: "http", hostname: "**" },
     ],
   },
-  // cgroup is 2GB — keep build light
-  experimental: {
-    cpus: 1,
-    workerThreads: false,
-  },
+  allowedDevOrigins: process.env.BASE44_PUBLIC_HOST_SUFFIX
+    ? ["3000-" + process.env.BASE44_PUBLIC_HOST_SUFFIX]
+    : [],
 };
 export default nextConfig;
