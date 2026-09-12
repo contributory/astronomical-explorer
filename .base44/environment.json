@@ -1,0 +1,13 @@
+{
+  "previewPort": 3000,
+  "healthPath": "/",
+  "startCommand": "docker compose -f docker-compose.base44.yml up -d",
+  "secrets": [
+    {
+      "name": "NASA_API_KEY",
+      "description": "NASA Open APIs key from https://api.nasa.gov — optional; app falls back to DEMO_KEY (rate-limited) if not set.",
+      "requiredAtBoot": false,
+      "generatedForDevelopment": false
+    }
+  ]
+}
