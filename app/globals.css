@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #070A14;
+  --bg-soft: #0F172A;
+  --card: rgba(30, 41, 59, 0.55);
+  --border: rgba(255,255,255,0.08);
+  --text: #F1F5F9;
+  --muted: #94A3B8;
+}
+
+* { scrollbar-width: thin; scrollbar-color: #334155 transparent; }
+*::-webkit-scrollbar { width: 6px; height: 6px; }
+*::-webkit-scrollbar-thumb { background: #334155; border-radius: 99px; }
+*::-webkit-scrollbar-track { background: transparent; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* dark starfield */
+.starfield {
+  background:
+    radial-gradient(1px 1px at 20% 30%, #fff 100%, transparent 100%),
+    radial-gradient(1px 1px at 40% 70%, rgba(255,255,255,0.8) 100%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 90% 40%, rgba(255,255,255,0.6) 100%, transparent 100%),
+    radial-gradient(ellipse at top, #161B29 0%, #080B14 60%, #060814 100%);
+  background-repeat: repeat;
+  background-size: 550px 550px, 350px 350px, 250px 250px, auto;
+}
+
+.glass {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  border-color: rgba(56,189,248,0.3);
+  box-shadow: 0 12px 32px rgba(2,132,199,0.15);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #38BDF8 0%, #818CF8 50%, #C084FC 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ================= LIGHT THEME — editorial, warm, airy ================= */
+.light {
+  --bg: #F8FAFC;
+  --bg-soft: #FFFFFF;
+  --card: #FFFFFF;
+  --border: #E2E8F0;
+  --text: #0F172A;
+  --muted: #64748B;
+}
+.light body {
+  background: var(--bg);
+  color: var(--text);
+}
+.light * { scrollbar-color: #CBD5E1 transparent; }
+.light *::-webkit-scrollbar-thumb { background: #CBD5E1; }
+
+.light .starfield {
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(56,189,248,0.09) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 10%, rgba(168,85,247,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(251,146,60,0.05) 0%, transparent 60%),
+    linear-gradient(180deg, #FFFFFF 0%, #FDFDFF 35%, #F1F5F9 100%);
+}
+
+/* header — clean white */
+.light header {
+  background: rgba(255,255,255,0.88) !important;
+  border-color: #E2E8F0 !important;
+  backdrop-filter: blur(16px) saturate(1.2);
+}
+
+/* glass in light */
+.light .glass {
+  background: rgba(255,255,255,0.9) !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 1px 3px rgba(15,23,42,0.06), 0 8px 24px rgba(15,23,42,0.04);
+}
+
+/* ── cards & surfaces — catch every hardcoded dark ── */
+.light [class*="bg-[#0B1020]"],
+.light [class*="bg-[#0F172A]"],
+.light [class*="bg-[#080B14]"],
+.light [class*="bg-[#050816]"] {
+  background: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 1px 3px rgba(15,23,42,0.06), 0 4px 12px rgba(15,23,42,0.04);
+}
+.light [class*="from-[#0F172A]"],
+.light [class*="to-[#111A33]"] {
+  --tw-gradient-from: #FFFFFF !important;
+  --tw-gradient-to: #F8FAFC !important;
+}
+.light [class*="from-[#0B1020]"] {
+  --tw-gradient-from: #FFFFFF !important;
+}
+
+/* white translucent surfaces → solid white with soft border+shadow */
+.light [class*="bg-white/[0.04]"],
+.light [class*="bg-white/[0.03]"],
+.light [class*="bg-white/[0.06]"],
+.light .bg-white\/5,
+.light [class*="bg-white/5"],
+.light [class*="bg-white/10"],
+.light [class*="bg-white/[0.06]"] {
+  background: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 1px 2px rgba(15,23,42,0.05);
+}
+.light [class*="bg-black/40"],
+.light [class*="bg-black/60"] {
+  background: rgba(255,255,255,0.94) !important;
+  border-color: #E2E8F0 !important;
+  backdrop-filter: blur(12px);
+}
+.light [class*="border-white/10"],
+.light [class*="border-white/15"],
+.light [class*="border-white/5"],
+.light [class*="border-white/[0.06]"],
+.light [class*="border-white/[0.08]"],
+.light .border-white\/10,
+.light .border-white\/5 {
+  border-color: #E2E8F0 !important;
+}
+/* subtle slate borders that were white/10 in dark should be visible but soft in light */
+.light .divide-white\/5 > * + * { border-color: #F1F5F9 !important; }
+
+/* ── text — ensure contrast on light ── */
+.light .text-white,
+.light [class*="text-white"]:not([class*="text-white/"]) {
+  color: #0F172A !important;
+}
+.light .text-white\/60,
+.light [class*="text-white/60"] { color: #475569 !important; }
+.light .text-white\/70,
+.light [class*="text-white/70"] { color: #334155 !important; }
+.light .text-white\/50,
+.light [class*="text-white/50"] { color: #64748B !important; }
+.light .text-white\/40,
+.light [class*="text-white/40"] { color: #94A3B8 !important; }
+.light .text-white\/30,
+.light [class*="text-white/30"] { color: #94A3B8 !important; }
+
+.light .text-sky-300 { color: #0284C7 !important; }
+.light .text-emerald-300 { color: #059669 !important; }
+.light .text-amber-300 { color: #D97706 !important; }
+.light .text-violet-300 { color: #7C3AED !important; }
+.light .text-sky-400 { color: #0284C7 !important; }
+.light .text-violet-400 { color: #7C3AED !important; }
+
+/* muted helper */
+.light .text-white\/60 svg,
+.light [class*="text-white/60"] svg { color: #64748B !important; }
+
+/* ── inputs ── */
+.light input,
+.light select,
+.light textarea {
+  background: #FFFFFF !important;
+  border-color: #CBD5E1 !important;
+  color: #0F172A !important;
+}
+.light input::placeholder { color: #94A3B8 !important; }
+.light [class*="[color-scheme:dark]"] { color-scheme: light !important; }
+
+/* ── buttons — white ghost on dark becomes solid dark on light for contrast ── */
+.light .bg-white {
+  background: #0F172A !important;
+  color: #FFFFFF !important;
+}
+.light .bg-white:hover { background: #1E293B !important; }
+.light [class*="bg-white/10"] {
+  background: #F1F5F9 !important;
+  color: #0F172A !important;
+  border-color: #E2E8F0 !important;
+}
+.light [class*="bg-white/5"] {
+  background: #FFFFFF !important;
+}
+
+/* keep brand gradients but slightly deeper for light legibility */
+.light .gradient-text {
+  background: linear-gradient(135deg, #0284C7 0%, #6366F1 50%, #A855F7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* image overlay gradients — flip black → white veil */
+.light [class*="from-black"] {
+  --tw-gradient-from: rgba(255,255,255,0.96) !important;
+}
+.light [class*="from-black/70"] { --tw-gradient-from: rgba(255,255,255,0.92) !important; }
+.light .to-transparent { --tw-gradient-to: transparent !important; }
+
+/* chart & map tweaks in light */
+.light .recharts-cartesian-grid line { stroke: #E2E8F0 !important; }
+.light .recharts-text { fill: #64748B !important; }
+
+/* soft elevation for main cards that were flat */
+.light .card-hover:hover {
+  border-color: #CBD5E1 !important;
+  box-shadow: 0 8px 24px rgba(15,23,42,0.08) !important;
+  transform: translateY(-1px);
+}

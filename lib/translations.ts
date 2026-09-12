@@ -1,0 +1,63 @@
+export const TRANSLATIONS = {
+  vi: {
+    title: "Ứng Dụng Khám Phá Thiên Văn Học & Vũ Trụ",
+    subtitle: "Dữ liệu trực tiếp, cập nhật liên tục từ NASA, Open-Notify, SNAPI & các cổng thông tin thiên văn hàng đầu.",
+    menu_title: "Danh mục khám phá",
+    apod: "Ảnh Vũ Trụ (APOD)",
+    iss: "Theo Dõi ISS",
+    neo: "Tiểu Hành Tinh (NEO)",
+    mars: "Xe Thám Hiểm Sao Hỏa",
+    stargazing: "Hệ Mặt Trời 3D",
+    news: "Tin Tức & Cào Dữ Liệu",
+    lang_label: "Ngôn ngữ / Language",
+    theme_label: "Chế độ giao diện",
+    theme_dark: "Tối (Space Dark)",
+    theme_light: "Sáng (Clean Light)",
+    theme_auto: "Tự động (Auto)",
+    footer: "Dữ liệu mở từ NASA, Open-Notify, SNAPI, Space.com.",
+    explore: "Bắt đầu khám phá",
+    landingTitle: "Cosmic Explorer",
+    landingSub: "Cửa sổ nhìn ra vũ trụ — theo thời gian thực",
+    cta: "Khám phá ngay",
+    apodDesc: "Ảnh & video thiên văn mỗi ngày từ NASA",
+    issDesc: "Vị trí ISS live + phi hành đoàn",
+    neoDesc: "Giám sát tiểu hành tinh gần Trái Đất",
+    marsDesc: "Ảnh gốc từ Perseverance & Curiosity",
+    solarDesc: "Mô phỏng quỹ đạo 3D hệ Mặt Trời",
+    newsDesc: "Tin tức SNAPI + RSS Space.com/NASA",
+  },
+  en: {
+    title: "Cosmic Explorer & Astronomy Platform",
+    subtitle: "Live data updated in real-time from NASA, Open-Notify, SNAPI & leading space portals.",
+    menu_title: "Exploration Menu",
+    apod: "Picture of the Day (APOD)",
+    iss: "Live ISS Tracker",
+    neo: "Near Earth Objects (NEO)",
+    mars: "Mars Rovers Gallery",
+    stargazing: "3D Solar System",
+    news: "Space News & Scraping",
+    lang_label: "Language / Ngôn ngữ",
+    theme_label: "Theme Mode",
+    theme_dark: "Dark (Space Dark)",
+    theme_light: "Light (Clean Light)",
+    theme_auto: "Auto (System)",
+    footer: "Open data from NASA, Open-Notify, SNAPI, Space.com.",
+    explore: "Start exploring",
+    landingTitle: "Cosmic Explorer",
+    landingSub: "Your window to the universe — live",
+    cta: "Explore now",
+    apodDesc: "Daily astronomy picture & video from NASA",
+    issDesc: "Live ISS position + crew roster",
+    neoDesc: "Track asteroids near Earth orbit",
+    marsDesc: "Raw images from Perseverance & Curiosity",
+    solarDesc: "Interactive 3D orbital simulator",
+    newsDesc: "SNAPI + RSS from Space.com / NASA",
+  },
+} as const;
+
+export type Lang = keyof typeof TRANSLATIONS;
+export type TKey = keyof typeof TRANSLATIONS["vi"];
+
+export function t(key: TKey, lang: Lang = "en") {
+  return TRANSLATIONS[lang][key] ?? key;
+}
